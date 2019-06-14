@@ -29,3 +29,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+.vscode*
+echo "coverage" >> .gitignore
+
+# ignore changes to test database
+db/test.sqlite3
