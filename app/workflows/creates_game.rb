@@ -1,5 +1,6 @@
 class CreatesGame
   attr_accessor :name, :game
+
   def initialize(name: "")
     @name = name
   end
