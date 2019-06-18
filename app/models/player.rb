@@ -11,16 +11,11 @@ class Player < ApplicationRecord
   end
 
   def set_position(board_position)
-    self.update_attribute(:position, board_position)
+    self.position = board_position
   end
 
   def calculate_position(roll)
-    self.read_attribute(:position) + roll
-  end
-
-  def perform(big_dependency)
-    big_dependency.execute
-    return "we done"
+    self.position + roll
   end
 
   private

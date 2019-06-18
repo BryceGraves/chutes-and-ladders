@@ -2,26 +2,22 @@ class Game < ApplicationRecord
 
   has_many :players
   has_many :spaces
-  validates :name, presence: true, allow_blank: false
+  validates :name, allow_blank: false, presence: true
+  validates :current_player, allow_blank: false, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
 
-  def roll(players)
+  def roll
     current_player = get_current_player
     current_player.move(Dice::roll)
     update_position_for(current_player)
-    change_turn(players)
+    change_turn
   end
 
-  def change_turn(players)    
-    players = players.rotate
+  def change_turn
+    self.current_player += 1
   end
 
   def get_current_player
-    players.first
-  end
-
-  def perform(big_dependency)
-    big_dependency.execute
-    return "Game over man! Game over."
+    self.players[current_player % self.players.size]
   end
 
   def update_position_for(current_player)

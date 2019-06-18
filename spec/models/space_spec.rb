@@ -1,39 +1,56 @@
 require "rails_helper"
 
 RSpec.describe Space do
-  describe "initialize empty space" do
-    let(:space) { Space.new(space_type: "empty") }
+  let(:valid_space) { FactoryBot.build_stubbed(:space) }
 
-    it "creates a space of type empty" do
-      expect(space.space_type).to eq("empty")
+  describe "Space Validation" do
+    context "A space is valid if" do
+      it "It has a type of empty" do
+        valid_space.space_type = "empty"
+
+        expect(valid_space).to be_valid
+      end
+
+      it "It has a type of chute" do
+        valid_space.space_type = "chute"
+
+        expect(valid_space).to be_valid
+      end
+
+      it "It has a type of ladder" do
+        valid_space.space_type = "ladder"
+
+        expect(valid_space).to be_valid
+      end
+
+      it "It has a destination of an integer" do
+        valid_space.destination = 42
+
+        expect(valid_space).to be_valid
+      end
     end
 
-    it "destination of empty space is nil" do
-      expect(space.destination).to eq(nil)
-    end
-  end
+    context "A space is invalid if" do
+      it "It has a type that isn't empty, chute, or ladder" do
+        valid_space.space_type = "FAKE TYPE"
 
-  describe "initialize chute space" do
-    let(:space) { Space.new(space_type: "chute", destination: 1) }
+        expect(valid_space).to_not be_valid
+        expect(valid_space.errors[:space_type]).to eq(["is not included in the list"])
+      end
 
-    it "creates a space of type chute" do
-      expect(space.space_type).to eq("chute")
-    end
+      it "It has a destination of an below 0" do
+        valid_space.destination = -42
 
-    it "destination of chute space is 1" do
-      expect(space.destination).to eq(1)
-    end
-  end
+        expect(valid_space).to_not be_valid
+        expect(valid_space.errors[:destination]).to eq(["must be greater than 0"])
+      end
 
-  describe "initialize ladder space" do
-    let(:space) { Space.new(space_type: "ladder", destination: 90) }
+      it "It has a destination of an above 100" do
+        valid_space.destination = 101
 
-    it "creates a space of type ladder" do
-      expect(space.space_type).to eq("ladder")
-    end
-
-    it "destination of ladder space is 90" do
-      expect(space.destination).to eq(90)
+        expect(valid_space).to_not be_valid
+        expect(valid_space.errors[:destination]).to eq(["must be less than 101"])
+      end
     end
   end
 

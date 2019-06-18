@@ -1,15 +1,13 @@
 class CreatesPlayer
   attr_accessor :name, :position, :player
-  attr_reader :success
 
-  def initialize(name: "")
+  def initialize(name: "Unnamed Player")
     @name = name
     @position = 1
-    @success = false
   end
 
   def build
-    self.player = Player.new(name: name)
+    self.player = Player.new(name: name, position: position)
     player.position = position
     player
   end

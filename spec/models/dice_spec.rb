@@ -1,17 +1,17 @@
 require "rails_helper"
 
 RSpec.describe Dice do
-  describe "rolling the dice" do
-    it "returns a value less than or equal to 12 or 2 or greater" do
+  describe "Rolling dice once" do
+    it "Returns a value between 2 and 12" do
       expect(Dice.roll).to be_between(2, 12)
     end
+  end
 
-    it "always returns a value within the correct range" do
+  describe "Rolling dice many times" do
+    it "Always returns a value within the range of 2 and 12" do
       rolls = []
       1000.times { rolls << Dice.roll }
       expect(rolls).to all(be_between(2, 12))
     end
-
   end
-
 end

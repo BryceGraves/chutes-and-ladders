@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2019_04_24_185000) do
 
   create_table "games", force: :cascade do |t|
     t.string "name"
+    t.integer "current_player"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

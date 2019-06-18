@@ -2,102 +2,91 @@ require "rails_helper"
 
 RSpec.describe Player do
   let(:valid_player) { FactoryBot.build_stubbed(:player) }
-  let(:nameless_player) { FactoryBot.build_stubbed(:nameless_player) }
-  let(:nil_player) { FactoryBot.build_stubbed(:nil_player) }
-  let(:moves_around) { FactoryBot.create(:player, position: 5) }
-  let(:starts_at_fifth) { FactoryBot.build_stubbed(:starts_at_fifth_position) }
 
-  describe "Initialized players are valid" do
-    it "Players are initialized with a valid name" do
-      expect(valid_player).to have_name("FAKE PLAYER")
+  describe "Player Validation" do
+    context "A player is valid if" do
+      it "It has a name" do
+        valid_player.name = "FAKE PLAYER"
 
-      expect(valid_player).to be_valid
+        expect(valid_player).to be_valid
+      end
+
+      it "It has a position of an integer" do
+        valid_player.position = 1
+
+        expect(valid_player).to be_valid
+      end
     end
 
-    it "Players are initialized with a valid positiong of one" do
-      expect(valid_player).to have_position(1)
-
-      expect(valid_player).to be_valid
-    end
-  end
-
-  describe "Player validation" do
-    it "isn't a valid player if its name is blank" do
-      expect(nameless_player).to have_name("")
-
-      expect(nameless_player).not_to be_valid
-      expect(nameless_player.errors[:name]).to eq(["can't be blank"])
-    end
-
-    it "isn't a valid player if the name is nil" do
-      expect(nil_player).to have_name(nil)
-
-      expect(nil_player).not_to be_valid
-      expect(nil_player.errors[:name]).to eq(["can't be blank"])
-    end
-
-    it "Invalid if a player has a position that isn't an integer" do
-      valid_player.position = 0.5
-
-      expect(valid_player).not_to be_valid
-      expect(valid_player.errors[:position]).to eq(["must be an integer"])
-    end
-  end
+    context "A player is invalid if" do
+      it "It has a blank name" do
+        valid_player.name = ""
   
-
-  describe "movement" do    
-    it "can move forward by a number of positions" do
-      moves_around.move(6)
-      expect(moves_around).to have_position(11)
-    end
-
-    it "can move backward by a number of positions" do
-      moves_around.move(-4)
-      expect(moves_around).to have_position(1)
-    end
-
-    it "can be sent to a specific position" do
-      moves_around.set_position(50)
-      expect(moves_around).to have_position(50)
-    end
-
-    it "won't move the player above a space of 100" do
-      moves_around.set_position(90)
-      expect(moves_around).to have_position(90)
-      moves_around.move(11)
-      expect(moves_around).not_to have_position(101)
-    end
-
-    it "won't set the position below a space of 1" do
-      moves_around.set_position(1)
-      expect(moves_around).to have_position(1)
-      moves_around.move(-5)
-      expect(moves_around).not_to have_position(-4)
+        expect(valid_player).not_to be_valid
+        expect(valid_player.errors[:name]).to eq(["can't be blank"])
+      end
+  
+      it "It has a nil name" do
+        valid_player.name = nil
+  
+        expect(valid_player).not_to be_valid
+        expect(valid_player.errors[:name]).to eq(["can't be blank"])
+      end
+  
+      it "It has a position that isn't an integer" do
+        valid_player.position = 0.5
+  
+        expect(valid_player).not_to be_valid
+        expect(valid_player.errors[:position]).to eq(["must be an integer"])
+      end
     end
   end
 
-  describe "using the big dependency" do
-    # This takes a super long time :(
-      # it "returns a message that says 'we done'" do
-      #   big_guy = BigDependency.new
-      #   expect(valid_player.perform(big_guy)).to eq('we done')
-      # end
+  describe "Player Functionality" do
+    context "Player Position" do
+      it "A player can set it's position" do
+        valid_player.position = 1
 
-    it "returns a message that says 'we done' using a fake" do
-      fake_big_guy = FakeBigDependency.new
-      expect(valid_player.perform(fake_big_guy)).to eq('we done')
+        valid_player.set_position(42)
+
+        expect(valid_player.position).to eq(42)
+      end
     end
 
-    it "returns a message that says 'we done' using a stub" do
-      big_dependency = BigDependency.new
-      allow(big_dependency).to receive(:execute).and_return("i'm tired")
-      expect(valid_player.perform(big_dependency)).to eq('we done')
-    end
+    context "Player Movement" do
+      it "A player can move forward" do
+        expect(valid_player.position).to eq(1)
+        
+        valid_player.move(7)
 
-    it "returns a message that says 'we done' using a mock" do
-      mock_big_dependency = double(BigDependency)
-      expect(mock_big_dependency).to receive(:execute).once
-      expect(valid_player.perform(mock_big_dependency)).to eq('we done')
+        expect(valid_player.position).to eq(8)
+      end
+
+      it "A player can move backwards (though this will never be done)" do
+        valid_player.move(-4)
+
+        expect(valid_player.position).to eq(1)
+      end
+
+      it "A player can't move past position 100" do
+        valid_player.set_position(90)
+
+        expect(valid_player.position).to eq(90)
+
+        valid_player.move(42)
+
+        expect(valid_player.position).not_to eq(101)
+      end
+
+      it "A player can't move below a position of 1 (this is a sanity check)" do
+        valid_player.set_position(1)
+
+        expect(valid_player.position).to eq(1)
+
+        valid_player.move(-5)
+
+        expect(valid_player.position).not_to eq(-4)
+      end
     end
   end
 

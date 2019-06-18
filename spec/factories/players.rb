@@ -4,14 +4,4 @@ FactoryBot.define do
     position { 1 }
   end
 
-  factory :nameless_player, class: Player do
-    name { "" }
-    position { 1 }
-  end
-
-  factory :nil_player, class: Player do
-    name { nil }
-    position { nil }
-  end
-
 end
