@@ -11,8 +11,8 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.name %></td>
-        <% game.player_ids.each do |player| %>
-          <td><%= player %></td>
+        <% game.players.each do |player| %>
+          <td><%= player.name %></td>
         <% end %>
       </tr>
     <% end %>

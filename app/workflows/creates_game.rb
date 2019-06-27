@@ -15,7 +15,7 @@ class CreatesGame
 
   def create
     build
-    result = game.save
+    game.save!
   end
 
 end

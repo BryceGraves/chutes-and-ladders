@@ -1,7 +1,8 @@
-<h1>Add Player</h1>
+<h2>Add Player</h2>
 <%= form_for @player, url: {action: "create"} do |p| %>
   <%= p.label(:name) %>
   <%= p.text_field(:name) %>
+  <%= hidden_field_tag 'game_id', @game_id %>
   <%= p.submit %>
 <% end %>
 

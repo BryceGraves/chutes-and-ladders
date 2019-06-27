@@ -15,15 +15,16 @@ class GamesController < ApplicationController
     @game_workflow = CreatesGame.new(
       name: params[:game][:name]
     )
-    @game_workflow.create
 
-    if @game_workflow.game.errors.any?
+    begin
+      @game_workflow.create  
+    rescue StandardError => err
       @game = @game_workflow.game
       render :new
-    else
-      redirect_to action: 'show', id: @game_workflow.game.id
+      return
     end
-      
+    
+    redirect_to action: 'show', id: @game_workflow.game.id
   end
 
 end
