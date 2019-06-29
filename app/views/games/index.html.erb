@@ -14,7 +14,9 @@
         <% game.players.each do |player| %>
           <td><%= player.name %></td>
         <% end %>
+        <td><%= button_to "View #{game.name}", game_path(:id => game.id), :method => :get %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= button_to "Create New Game", new_game_path, :method => :get %>
