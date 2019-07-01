@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+#TODO: add tests for all controller methods
 RSpec.describe GamesController, type: :controller do
   describe "Games index page" do
     it "Returns status code 200" do
