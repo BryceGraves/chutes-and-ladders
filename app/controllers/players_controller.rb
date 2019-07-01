@@ -1,8 +1,4 @@
 class PlayersController < ApplicationController
-  def index
-    @players = Player.all
-  end
-
   def new
     @game_id = params[:game_id]
     @player = Player.new
