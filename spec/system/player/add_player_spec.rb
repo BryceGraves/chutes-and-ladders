@@ -1,7 +1,7 @@
 require "rails_helper"
 
+#TODO: add seed data to remove the need to build a game for each test.
 RSpec.describe "Adding Player to Game Flow", type: :system do
-  #FIXME: Change this to be better and match a better flow. Mainly be better
   it "A user can add a player to a created game" do
     visit new_game_path
     fill_in "Name", with: "FAKE GAME NAME"
