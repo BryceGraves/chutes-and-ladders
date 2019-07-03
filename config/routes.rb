@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :games do
-    resources :players
+    resources :play, only: [ :index ]
+    resources :players, only: [ :create, :new, :edit ]
   end
 
   root to: redirect(path: '/games', status: 302)
