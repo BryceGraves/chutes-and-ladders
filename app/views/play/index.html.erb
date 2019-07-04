@@ -1,0 +1,55 @@
+<style type="text/css">
+table,
+td {
+  border: 1px solid black;
+  text-align: center;
+}
+</style>
+
+
+<% board_width = Integer.sqrt(@game.spaces.size) %>
+
+<h1>Play: <%= @game.name %></h1>
+<h2>
+  <%= "Currently playing: #{@game.get_current_player.name}" %>
+</h2>
+<%= button_to "Take Turn", game_path(@game.id), method: :patch %>
+<br />
+<br />
+<table>
+  <tbody>
+    <tr>
+    <% @game.spaces.each_with_index do |space, index| %>
+      <% playerids = [] %>
+      <% @game.players.each do |player|%>
+        <% if player.position == index + 1%>
+          <% playerids << player.id%>
+        <%end%>
+      <%end%>
+      <td>
+        <div>
+          <%= "Space Number: #{index + 1}" %>
+        </div>
+        <div>
+          <%= "Space Type: " + space.space_type %>
+        </div>
+        <div>
+          <%= "Players Here: "%>
+          <% @game.players.each do |player| %>
+            <% if (index + 1) == player.position %>
+              <% if @game.players.last == player %>
+              <%= "#{player.name}" %>
+              <% else %>
+              <%= "#{player.name}, " %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </td>
+      <% if (index + 1) % board_width == 0 %>
+        </tr>
+        <tr>
+      <% end %>
+    <%end%>
+  </tbody>
+</table>
