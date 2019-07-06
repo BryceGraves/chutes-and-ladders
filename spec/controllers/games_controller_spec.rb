@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 #TODO: add tests for all controller methods
+#TODO: turn describe into success and failure and use context for each controller
 RSpec.describe GamesController, type: :controller do
   let(:all_games) { create_list(:game, 3) }
 
