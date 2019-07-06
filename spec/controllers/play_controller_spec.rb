@@ -5,6 +5,7 @@ RSpec.describe PlayController, type: :controller do
   let(:game) { FactoryBot.create(:game, :has_players) }
 
   #This sets the referrer in play update to the created game above
+  #TODO: figure out if there is a better way to set this
   before do
     allow_any_instance_of(ActionController::TestRequest).to receive(:referrer) do
       "/game/#{game.id}/play"
