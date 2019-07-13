@@ -18,38 +18,33 @@ td {
 <br />
 <table>
   <tbody>
-    <tr>
-    <% @game.spaces.each_with_index do |space, index| %>
-      <% playerids = [] %>
-      <% @game.players.each do |player|%>
-        <% if player.position == index + 1%>
-          <% playerids << player.id%>
-        <%end%>
-      <%end%>
-      <td>
-        <div>
-          <%= "Space Number: #{index + 1}" %>
-        </div>
-        <div>
-          <%= "Space Type: " + space.space_type %>
-        </div>
-        <div>
-          <%= "Players Here: "%>
-          <% @game.players.each do |player| %>
-            <% if (index + 1) == player.position %>
-              <% if @game.players.last == player %>
-              <%= "#{player.name}" %>
-              <% else %>
-              <%= "#{player.name}, " %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-      </td>
-      <% if (index + 1) % board_width == 0 %>
-        </tr>
-        <tr>
-      <% end %>
-    <%end%>
+    <% board_rows = @game.spaces.each_slice(board_width) %>
+    <%
+      player_spaces = @game.players.each_with_object({}) do |player, mem|
+        key = player.position
+        mem[key] = [] unless mem[key]
+        mem[key] << player.name
+      end
+    %>
+    <% board_rows.each_with_index do |row, y| %>
+      <tr>
+        <% row.each_with_index do |space, x| %>
+          <% current_position = y * row.length + x + 1  %>
+          <td>
+            <div>
+              <%= "Space Number: #{current_position}" %>
+            </div>
+            <div>
+              <%= "Space Type: #{space.space_type}" %>
+            </div>
+            <div>
+              Players Here:
+              <% players_here = player_spaces[current_position] %>
+              <% players_here.join(', ') if players_here %>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
   </tbody>
 </table>
