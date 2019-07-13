@@ -39,8 +39,10 @@ td {
             </div>
             <div>
               Players Here:
-              <% players_here = player_spaces[current_position] %>
-              <% players_here.join(', ') if players_here %>
+              <%=
+                players_here = player_spaces[current_position]
+                players_here.join(', ') if players_here
+              %>
             </div>
           </td>
         <% end %>
