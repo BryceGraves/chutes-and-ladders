@@ -28,4 +28,8 @@ class Game < ApplicationRecord
     end
   end
 
+  def winner?
+    self.players.any? { |player| player.position == 100 }
+  end
+
 end
