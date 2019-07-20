@@ -7,9 +7,11 @@ td {
 </style>
 
 
+<% if !@game.winner? %>
+
 <% board_width = Integer.sqrt(@game.spaces.size) %>
 
-<h1>Play: <%= @game.name %></h1>
+<h1><%= @game.name %></h1>
 <h2>
   <%= "Currently playing: #{@game.get_current_player.name}" %>
 </h2>
@@ -50,3 +52,10 @@ td {
     <% end %>
   </tbody>
 </table>
+
+<% else %>
+
+<h1>WE HAVE A WINNER!!!</h1>
+<h2>Winning placeholder for now</h2>
+
+<% end %>
