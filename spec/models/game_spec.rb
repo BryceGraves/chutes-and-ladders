@@ -128,14 +128,32 @@ RSpec.describe Game do
     end
 
     context "A game can check if a player has won" do
-      it "Winner returns true if a player has won (is on space 100)" do
-        valid_game_with_players.get_current_player.set_position(100)
+      describe "Method: winner" do
+        it "Returns the winning player if a player has won" do
+          expected_result = valid_game_with_players.get_current_player
+          expected_result.set_position(100)
 
-        expect(valid_game_with_players.winner?).to eq(true)
+          expect(valid_game_with_players.winner).to eq(expected_result)
+        end
+
+        it "Returns nil if no player has won" do
+          valid_game_with_players.get_current_player.set_position(99)
+
+          expect(valid_game_with_players.winner).to eq(nil)
+        end
       end
+      
 
-      it "Winner returns false if no player has won" do
-        expect(valid_game_with_players.winner?).to eq(false)
+      describe "Method: winner?" do
+        it "Returns true if a player has won (is on space 100)" do
+          valid_game_with_players.get_current_player.set_position(100)
+
+          expect(valid_game_with_players.winner?).to eq(true)
+        end
+
+        it "Returns false if no player has won" do
+          expect(valid_game_with_players.winner?).to eq(false)
+        end
       end
     end
   end
