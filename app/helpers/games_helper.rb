@@ -103,11 +103,6 @@ module GamesHelper
   ]
 
   def self.generate_spaces
-    spaces = []
-    SPACESDATA.each do |config|
-      spaces << Space.new(config)
-    end
-    spaces
+    SPACESDATA.map { |config| Space.new(config) }
   end
-  
 end
