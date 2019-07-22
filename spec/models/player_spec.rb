@@ -45,8 +45,6 @@ RSpec.describe Player do
   describe "Player Functionality" do
     context "Player Position" do
       it "A player can set it's position" do
-        valid_player.position = 1
-
         valid_player.position = 42
 
         expect(valid_player.position).to eq(42)
@@ -56,7 +54,7 @@ RSpec.describe Player do
     context "Player Movement" do
       it "A player can move forward" do
         expect(valid_player.position).to eq(1)
-        
+
         valid_player.move(7)
 
         expect(valid_player.position).to eq(8)
