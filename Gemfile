@@ -7,13 +7,8 @@ ruby '2.6.1'
 gem 'rails', '~> 5.2.2'
 
 ######## Heroku Application Changes for Database ###########
-group :development, :test do
-  gem 'sqlite3'
-end
 
-group :production do
-  gem 'pg', '~> 0.18'
-end
+gem 'pg', '~> 0.18'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
