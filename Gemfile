@@ -42,6 +42,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails", "~> 3.7.0"
   gem 'factory_bot_rails'
+  gem "rails-controller-testing", "~> 1.0"
   gem 'sqlite3'
 end
 
@@ -70,4 +71,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "capybara-screenshot", "~> 1.0"
 gem 'simplecov', require: false, group: :test
-gem "rails-controller-testing", "~> 1.0"
+gem 'rubocop', require: false
