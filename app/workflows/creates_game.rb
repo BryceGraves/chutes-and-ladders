@@ -9,7 +9,7 @@ class CreatesGame
 
   def build
     self.game = Game.new(current_player: current_player, name: name, players: players)
-    game.spaces = GamesHelper::generate_spaces
+    game.spaces = GamesHelper.generate_spaces
     game
   end
 
@@ -17,5 +17,4 @@ class CreatesGame
     build
     game.save!
   end
-
 end
