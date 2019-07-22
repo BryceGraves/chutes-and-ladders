@@ -1,3 +1,20 @@
-<h1>Game Display</h1>
+<h1>Game: <%= @game.name %></h1>
+<%= button_to "Play Game", game_play_index_path(@game.id), :method => :get %>
 <br />
-<h3>Game Name: <%= @game.name %></h3>
+<table>
+  <thead>
+    <tr>
+      <td>Players:</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @game.players.each_with_index do |player, index| %>
+      <tr>
+        <td />
+        <td><%= "Player #{index + 1}: #{player.name}" %></td>
+        <td><%= "Position: #{player.position}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= button_to "Add Player", new_game_player_path(@game.id), :method => :get %>

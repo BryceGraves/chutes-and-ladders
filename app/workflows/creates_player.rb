@@ -1,9 +1,10 @@
 class CreatesPlayer
   attr_accessor :name, :position, :player
 
-  def initialize(name: "Unnamed Player")
+  def initialize(name: "", game_id: -1)
     @name = name
     @position = 1
+    @game_id = game_id
   end
 
   def build
@@ -13,9 +14,9 @@ class CreatesPlayer
   end
 
   def create
-    build
-    result = player.save!
-    @success = result
+    game = Game.find(@game_id)
+    game.players << build
+    player.save!
   end
 
 end

@@ -11,10 +11,12 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.name %></td>
-        <% game.player_ids.each do |player| %>
-          <td><%= player %></td>
+        <% game.players.each do |player| %>
+          <td><%= player.name %></td>
         <% end %>
+        <td><%= button_to "View #{game.name}", game_path(game.id), :method => :get %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= button_to "Create New Game", new_game_path, :method => :get %>

@@ -1,12 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "Create Game Flow", type: :system do
-  #FIXME: Change this to be better and match a better flow. Mainly be better
-  it "A user can create and start a game" do
+  it "A user can create a game" do
     visit new_game_path
-    fill_in "Name", with: "FAKE NAME"
+    fill_in "Name", with: "FAKE GAME"
     click_on("Create Game")
-    expect(page).to have_content("FAKE NAME")
+    expect(page).to have_content("FAKE GAME")
   end
 
   it "A user cannot create a game with a blank name" do

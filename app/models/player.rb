@@ -2,6 +2,10 @@ class Player < ApplicationRecord
   validates :name, presence: true, allow_blank: false
   validates :position, presence:true, numericality: { only_integer: true }
 
+  def calculate_position(roll)
+    self.position + roll
+  end
+
   def move(roll)
     new_position = calculate_position(roll)
 
@@ -12,10 +16,6 @@ class Player < ApplicationRecord
 
   def set_position(board_position)
     self.position = board_position
-  end
-
-  def calculate_position(roll)
-    self.position + roll
   end
 
   private
