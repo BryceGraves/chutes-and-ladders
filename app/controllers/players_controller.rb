@@ -9,16 +9,15 @@ class PlayersController < ApplicationController
       name: params[:player][:name],
       game_id: params[:game_id]
     )
-    
+
     begin
-      @player_workflow.create  
+      @player_workflow.create
     rescue StandardError => err
       @player = @player_workflow.player
       render :new
       return
     end
-    
+
     redirect_to controller: 'games', action: 'show', id: params[:game_id]
   end
-
 end

@@ -17,14 +17,13 @@ class GamesController < ApplicationController
     )
 
     begin
-      @game_workflow.create  
+      @game_workflow.create
     rescue StandardError => err
       @game = @game_workflow.game
       render :new
       return
     end
-    
+
     redirect_to action: 'show', id: @game_workflow.game.id
   end
-
 end

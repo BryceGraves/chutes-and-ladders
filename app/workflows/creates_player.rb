@@ -1,10 +1,10 @@
 class CreatesPlayer
   attr_accessor :name, :position, :player
 
-  def initialize(name: "", game_id: -1)
+  def initialize(name: '', game_id: -1)
     @name = name
-    @position = 1
     @game_id = game_id
+    @position = 1
   end
 
   def build
