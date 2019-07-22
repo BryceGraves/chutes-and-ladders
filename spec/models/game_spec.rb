@@ -119,7 +119,7 @@ RSpec.describe Game do
 
     context "Updating position" do
       it "Player position updated to end of chute or ladder when landed on" do
-        valid_game_with_players.get_current_player.set_position(15)
+        valid_game_with_players.get_current_player.position = 15
 
         valid_game_with_players.update_position_for(valid_game_with_players.get_current_player)
 
@@ -131,13 +131,13 @@ RSpec.describe Game do
       describe "Method: winner" do
         it "Returns the winning player if a player has won" do
           expected_result = valid_game_with_players.get_current_player
-          expected_result.set_position(100)
+          expected_result.position = 100
 
           expect(valid_game_with_players.winner).to eq(expected_result)
         end
 
         it "Returns nil if no player has won" do
-          valid_game_with_players.get_current_player.set_position(99)
+          valid_game_with_players.get_current_player.position = 99
 
           expect(valid_game_with_players.winner).to eq(nil)
         end
@@ -146,7 +146,7 @@ RSpec.describe Game do
 
       describe "Method: winner?" do
         it "Returns true if a player has won (is on space 100)" do
-          valid_game_with_players.get_current_player.set_position(100)
+          valid_game_with_players.get_current_player.position = 100
 
           expect(valid_game_with_players.winner?).to eq(true)
         end
