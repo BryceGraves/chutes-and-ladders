@@ -3,7 +3,7 @@ FactoryBot.define do
     name { "FAKE GAME" }
     current_player { 0 }
     players { [] }
-    spaces { GamesHelper::generate_spaces }
+    spaces { GamesHelper.generate_spaces }
 
     trait :has_players do
       players {
@@ -17,5 +17,4 @@ FactoryBot.define do
       }
     end
   end
-
 end
