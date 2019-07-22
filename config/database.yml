@@ -26,7 +26,7 @@ test:
 
 production:
   <<: *default
-  database: chutes_and_ladders_production
-  username: chutes_and_ladders
+  database: chutes-and-ladders_production
+  username: chutes-and-ladders
   password:
 
