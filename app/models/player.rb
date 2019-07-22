@@ -20,5 +20,4 @@ class Player < ApplicationRecord
   def valid_position?(position)
     position.positive? && (position <= MAX_POSITION)
   end
-
 end
