@@ -1,4 +1,5 @@
 class Player < ApplicationRecord
+  belongs_to :game
   validates :name, presence: true, allow_blank: false
   validates :position, presence: true, numericality: { only_integer: true }
 

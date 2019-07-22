@@ -1,5 +1,4 @@
 class Game < ApplicationRecord
-
   has_many :players
   has_many :spaces
   validates :current_player, allow_blank: false, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
