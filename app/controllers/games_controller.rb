@@ -12,19 +12,21 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game_workflow = CreatesGame.new(
-      name: params[:game][:name]
-    )
+    @game_workflow = CreatesGame.new(name: params[:game][:name])
 
     begin
-      @game_workflow.create  
+      @game_workflow.create
     rescue StandardError => err
       @game = @game_workflow.game
       render :new
       return
     end
-    
+
     redirect_to action: 'show', id: @game_workflow.game.id
   end
 
+  def destroy
+    Game.find(params[:id]).destroy
+    redirect_to request.referrer
+  end
 end
