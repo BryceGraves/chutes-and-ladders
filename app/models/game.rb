@@ -30,7 +30,7 @@ class Game < ApplicationRecord
   end
 
   def winner?
-    players.any? { |player| player.position == 100 }
+    !winner.nil?
   end
 
   private
@@ -38,5 +38,4 @@ class Game < ApplicationRecord
   def player_space(current_player)
     spaces[current_player.read_attribute(:position) - 1]
   end
-
 end
