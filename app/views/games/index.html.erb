@@ -15,6 +15,14 @@
           <td><%= player.name %></td>
         <% end %>
         <td><%= button_to "View #{game.name}", game_path(game.id), :method => :get %></td>
+        <td>
+          <%=
+            button_to "Delete Game",
+            game_path(game.id),
+            method: :delete,
+            id: "delete-game-#{game.name}"
+          %>
+        </td>
       </tr>
     <% end %>
   </tbody>
