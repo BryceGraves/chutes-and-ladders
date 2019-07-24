@@ -14,10 +14,10 @@ RSpec.describe CreatesGame do
         expect(game_creator.game.name).to eq("Unnamed Game")
       end
 
-      it "It has current player of zero" do
+      it "It has turn of zero" do
         game_creator.build
 
-        expect(game_creator.game.current_player).to eq(0)
+        expect(game_creator.game.turn).to eq(0)
       end
 
       it "It has no players" do
@@ -40,10 +40,10 @@ RSpec.describe CreatesGame do
         expect(game_creator_with_name.game.name).to eq("FAKE GAME")
       end
 
-      it "It has current player of zero" do
+      it "It has turn of zero" do
         game_creator.build
 
-        expect(game_creator.game.current_player).to eq(0)
+        expect(game_creator.game.turn).to eq(0)
       end
 
       it "It has no players" do

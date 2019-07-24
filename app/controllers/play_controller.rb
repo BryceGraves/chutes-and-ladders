@@ -7,7 +7,7 @@ class PlayController < ApplicationController
   #Not sure how this will be done
   def update
     @game = Game.find(params[:game_id])
-    current_player = @game.get_current_player
+    current_player = @game.current_player
     @game.roll
     @game.save!
     current_player.save!
