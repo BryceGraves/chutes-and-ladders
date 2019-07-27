@@ -1,4 +1,5 @@
 # CHUTES & LADDERS
+[![Build Status](https://travis-ci.org/BryceGraves/chutes-and-ladders.svg?branch=develop)](https://travis-ci.org/BryceGraves/chutes-and-ladders)
 Team Members: Bryce Graves and Mackenzie Hatfield
 
 This is a rails based version of chutes and ladders for software engineering.
