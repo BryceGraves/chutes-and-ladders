@@ -18,13 +18,7 @@ FactoryBot.define do
 
     trait :has_players do
       players do
-        [
-          Player.new(name: 'FAKE PLAYER ONE', position: STARTING),
-          Player.new(name: 'FAKE PLAYER TWO', position: STARTING),
-          Player.new(name: 'FAKE PLAYER THREE', position: STARTING),
-          Player.new(name: 'FAKE PLAYER FOUR', position: STARTING),
-          Player.new(name: 'FAKE PLAYER FIVE', position: STARTING)
-        ]
+        Array.new(5) { |i| Player.new(name: "FAKE PLAYER #{i.humanize.upcase}", position: STARTING) }
       end
     end
   end
