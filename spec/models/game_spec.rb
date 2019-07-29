@@ -12,6 +12,10 @@ RSpec.describe Game do
         expect(valid_game).to be_valid
       end
 
+      it 'starts on turn 0' do
+        expecT(valid_game.turn).to eq(0)
+      end
+
       it "It has a turn index of an integer" do
         valid_game.turn = 0
 

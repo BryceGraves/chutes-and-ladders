@@ -12,18 +12,17 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game_workflow = CreatesGame.new(
-      name: params[:game][:name]
+    game_name = params[:game][:name]
+    @game = Game.create(
+      name: game_name,
+      spaces: GamesHelper.generate_spaces
     )
 
-    begin
-      @game_workflow.create
-    rescue StandardError => err
-      @game = @game_workflow.game
-      render :new
+    if @game.errors.any?
+      render(:new)
       return
     end
 
-    redirect_to action: 'show', id: @game_workflow.game.id
+    redirect_to action: 'show', id: @game.id
   end
 end
