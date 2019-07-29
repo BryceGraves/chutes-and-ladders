@@ -72,3 +72,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "capybara-screenshot", "~> 1.0"
 gem 'simplecov', require: false, group: :test
 gem 'rubocop', require: false
+
+gem "humanize", "~> 2.1"
