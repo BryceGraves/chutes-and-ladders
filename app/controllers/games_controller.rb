@@ -27,6 +27,7 @@ class GamesController < ApplicationController
 
   def destroy
     Game.find(params[:id]).destroy
-    redirect_to request.referrer
+
+    redirect_to games_path
   end
 end
