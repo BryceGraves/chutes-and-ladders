@@ -12,9 +12,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game_workflow = CreatesGame.new(
-      name: params[:game][:name]
-    )
+    @game_workflow = CreatesGame.new(name: params[:game][:name])
 
     begin
       @game_workflow.create
@@ -25,5 +23,11 @@ class GamesController < ApplicationController
     end
 
     redirect_to action: 'show', id: @game_workflow.game.id
+  end
+
+  def destroy
+    Game.find(params[:id]).destroy
+
+    redirect_to games_path
   end
 end
