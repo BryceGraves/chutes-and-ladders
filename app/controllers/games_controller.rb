@@ -25,4 +25,10 @@ class GamesController < ApplicationController
 
     redirect_to action: 'show', id: @game.id
   end
+
+  def destroy
+    Game.find(params[:id]).destroy
+
+    redirect_to games_path
+  end
 end
