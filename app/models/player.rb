@@ -24,7 +24,6 @@ class Player < ApplicationRecord
   private
 
   def valid_position?(position)
-    position >= START_POSSITION && position <= END_POSSITION
+    position.between?(START_POSSITION, END_POSSITION)
   end
-
 end
