@@ -1,7 +1,4 @@
 FactoryBot.define do
-  STARTING = 1
-  ENDING = 100
-
   factory :game, class: Game do
     name { 'FAKE GAME' }
     current_player { 0 }
@@ -11,14 +8,19 @@ FactoryBot.define do
     trait :complete do
       players do
         [
-          Player.new(name: 'FAKE PLAYER ONE', position: ENDING)
+          Player.new(name: 'FAKE PLAYER ONE', position: Player::END_POSSITION)
         ]
       end
     end
 
     trait :has_players do
       players do
-        Array.new(5) { |i| Player.new(name: "FAKE PLAYER #{i.humanize.upcase}", position: STARTING) }
+        Array.new(5) do |i|
+          Player.new(
+            name: "FAKE PLAYER #{i.humanize.upcase}",
+            position: Player::START_POSSITION
+          )
+        end
       end
     end
   end

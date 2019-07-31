@@ -1,4 +1,7 @@
 class Player < ApplicationRecord
+  START_POSSITION = 1
+  END_POSSITION = 100
+
   validates :name, presence: true, allow_blank: false
   validates :position, presence:true, numericality: { only_integer: true }
 
@@ -21,7 +24,7 @@ class Player < ApplicationRecord
   private
 
   def valid_position?(position)
-    (0 < position) and (position < 101)
+    position >= START_POSSITION && position <= END_POSSITION
   end
 
 end
