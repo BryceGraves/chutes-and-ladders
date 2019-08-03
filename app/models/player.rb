@@ -1,4 +1,6 @@
 class Player < ApplicationRecord
+  belongs_to :game
+
   START_POSSITION = 1
   END_POSSITION = 100
 
