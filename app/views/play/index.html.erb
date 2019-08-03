@@ -1,17 +1,24 @@
 <style type="text/css">
-table,
-td {
-  border: 1px solid black;
-  text-align: center;
-}
+  table,
+  td {
+    border: 1px solid black;
+    text-align: center;
+  }
+  ul {
+    border:  1px solid black;
+    padding: 1rem 2rem;
+  }
 </style>
 
+<ul>
+  <%= link_to "All Games", games_path %>
+</ul>
 
 <% if !@game.winner? %>
 
 <% board_width = Integer.sqrt(@game.spaces.size) %>
 
-<h1><%= @game.name %></h1>
+<h2><%= @game.name %></h2>
 <h2>
   <%= "Currently playing: #{@game.current_player.name}" %>
 </h2>

@@ -1,20 +1,15 @@
 # CHUTES & LADDERS
 [![Build Status](https://travis-ci.org/BryceGraves/chutes-and-ladders.svg?branch=develop)](https://travis-ci.org/BryceGraves/chutes-and-ladders)
 
-Team Members: Bryce Graves and Mackenzie Hatfield
-
-This is a rails based version of chutes and ladders for software engineering.
-
 ### SETUP
-After cloning the project, run ```bundle install``` in order
+After cloning the project, run ```bundle``` or ```bundle install```
 to download and include the project's dependencies.
 
 ### TESTS
-The test suite is executed by running the command ```rspec```
-from the command line
+The test suite is executed by running the command ```rspec``` from the command line (I personally use ```rspec -f d```)
 
 Quick list of important things:
 
-* Ruby version: 2.6.1
-
+* Ruby version: 2.6.3
 * Rails version: 5.2.3
+* Bundler version: 2.0.2
