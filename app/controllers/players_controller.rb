@@ -20,4 +20,10 @@ class PlayersController < ApplicationController
 
     redirect_to controller: 'games', action: 'show', id: params[:game_id]
   end
+
+  def destroy
+    Player.find(params[:id]).destroy
+
+    redirect_to controller: 'games', action: 'show', id: params[:game_id]
+  end
 end
