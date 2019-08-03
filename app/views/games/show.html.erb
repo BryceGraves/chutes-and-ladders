@@ -1,3 +1,14 @@
+<style>
+  ul {
+    border:  1px solid black;
+    padding: 1rem 2rem;
+  }
+</style>
+
+<ul>
+  <%= link_to "All Games", games_path %>
+</ul>
+
 <h1>Game: <%= @game.name %></h1>
 <%= button_to "Play Game", game_play_index_path(@game.id), :method => :get %>
 <br />
