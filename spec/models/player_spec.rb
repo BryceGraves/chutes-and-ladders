@@ -45,9 +45,7 @@ RSpec.describe Player do
   describe "Player Functionality" do
     context "Player Position" do
       it "A player can set it's position" do
-        valid_player.position = 1
-
-        valid_player.set_position(42)
+        valid_player.position = 42
 
         expect(valid_player.position).to eq(42)
       end
@@ -56,7 +54,7 @@ RSpec.describe Player do
     context "Player Movement" do
       it "A player can move forward" do
         expect(valid_player.position).to eq(1)
-        
+
         valid_player.move(7)
 
         expect(valid_player.position).to eq(8)
@@ -69,7 +67,7 @@ RSpec.describe Player do
       end
 
       it "A player can't move past position 100" do
-        valid_player.set_position(90)
+        valid_player.position = 90
 
         expect(valid_player.position).to eq(90)
 
@@ -79,7 +77,7 @@ RSpec.describe Player do
       end
 
       it "A player can't move below a position of 1 (this is a sanity check)" do
-        valid_player.set_position(1)
+        valid_player.position = 1
 
         expect(valid_player.position).to eq(1)
 
