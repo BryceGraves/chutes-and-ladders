@@ -3,26 +3,23 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
-
-######## Heroku Application Changes for Database ###########
-
-# Use Puma as the app server
-gem 'puma', '~> 3.11'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'mini_racer', platforms: :ruby
-
-# Use CoffeeScript for .coffee assets and views
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap', '= 4.3.1'
+gem 'capybara-screenshot', '~> 1.0'
 gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'humanize', '~> 2.1'
 gem 'jbuilder', '~> 2.5'
+gem 'puma', '~> 3.11'
+gem 'rails', '~> 5.2.2'
+gem 'rubocop', require: false
+gem 'sass-rails', '~> 5.0'
+gem 'simplecov', require: false, group: :test
+gem 'turbolinks', '~> 5'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'uglifier', '>= 1.3.0'
+gem "bootstrap-sass", "~> 3.4"
+
+# gem 'mini_racer', platforms: :ruby
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -33,9 +30,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -64,13 +58,3 @@ end
 group :production do
   gem 'pg', '~> 0.18'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "capybara-screenshot", "~> 1.0"
-gem 'simplecov', require: false, group: :test
-gem 'rubocop', require: false
-
-gem "humanize", "~> 2.1"
-
-gem "bootstrap", "= 4.3.1"
