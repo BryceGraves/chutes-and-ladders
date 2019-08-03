@@ -10,7 +10,15 @@
 </ul>
 
 <h1>Game: <%= @game.name %></h1>
-<%= button_to "Play Game", game_play_index_path(@game.id), :method => :get %>
+
+<%=
+  if @game.players.size > 0
+    button_to "Play Game",
+    game_play_index_path(@game.id),
+    :method => :get
+  end
+%>
+
 <br />
 <table>
   <thead>
