@@ -24,6 +24,14 @@
         <td />
         <td><%= "Player #{index + 1}: #{player.name}" %></td>
         <td><%= "Position: #{player.position}" %></td>
+        <td>
+          <%=
+            button_to "Remove #{player.name}",
+            game_player_path(player.game_id, player),
+            method: :delete,
+            id: "delete-player-#{player.name}"
+          %>
+        </td>
       </tr>
     <% end %>
   </tbody>
