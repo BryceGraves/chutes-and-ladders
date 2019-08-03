@@ -6,13 +6,11 @@
 <% end %>
 
 <%if @game.errors.any? %>
-  <div id="errors">
-    <h3>Game not created because:</h3>
+  <%= alert type: :danger, dismissible: false, heading: "#{pluralize(@game.errors.count, 'error')} prohibited this game from being saved:" do %>
     <ul>
-      <% @game.errors.messages.each do |message| %>
-      <li><%= message %></li>
+      <% @game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
     </ul>
-  </div>
-  <h4>Please try again</h4>
+  <% end %>
 <% end %>
