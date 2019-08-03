@@ -10,7 +10,7 @@ After cloning the project, run ```bundle install``` in order
 to download and include the project's dependencies.
 
 ### TESTS
-The test suite is executed by running the command ```rspec``` from the command line
+The test suite is executed by running the command ```rspec``` from the command line (I personally use ```rspec -f d```)
 
 Quick list of important things:
 
