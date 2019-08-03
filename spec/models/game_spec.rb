@@ -12,7 +12,7 @@ RSpec.describe Game do
         expect(valid_game).to be_valid
       end
 
-      it 'starts on turn 0' do
+      it 'It starts on turn 0' do
         expect(valid_game.turn).to eq(0)
       end
 
