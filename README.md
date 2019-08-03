@@ -10,11 +10,10 @@ After cloning the project, run ```bundle install``` in order
 to download and include the project's dependencies.
 
 ### TESTS
-The test suite is executed by running the command ```rspec```
-from the command line
+The test suite is executed by running the command ```rspec``` from the command line
 
 Quick list of important things:
 
-* Ruby version: 2.6.1
-
+* Ruby version: 2.6.3
 * Rails version: 5.2.3
+* Bundler version: 2.0.2
