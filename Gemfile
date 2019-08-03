@@ -72,3 +72,5 @@ gem 'simplecov', require: false, group: :test
 gem 'rubocop', require: false
 
 gem "humanize", "~> 2.1"
+
+gem "bootstrap", "= 4.3.1"
