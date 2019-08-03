@@ -4,7 +4,7 @@ FactoryBot.define do
 
   factory :game, class: Game do
     name { 'FAKE GAME' }
-    current_player { 0 }
+    turn { 0 }
     players { [] }
     spaces { GamesHelper.generate_spaces }
 

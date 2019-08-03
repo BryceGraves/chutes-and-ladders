@@ -13,7 +13,7 @@ td {
 
 <h1><%= @game.name %></h1>
 <h2>
-  <%= "Currently playing: #{@game.get_current_player.name}" %>
+  <%= "Currently playing: #{@game.current_player.name}" %>
 </h2>
 <%= button_to "Take Turn", game_play_path(id: @game.id), method: :patch %>
 <br />
