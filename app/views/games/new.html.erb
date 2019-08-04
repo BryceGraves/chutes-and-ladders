@@ -6,7 +6,7 @@
 <% end %>
 
 <%if @game.errors.any? %>
-  <%= alert type: :danger, heading: "#{pluralize(@game.errors.count, 'error')} prohibited this game from being saved:" do %>
+  <%= alert type: :danger, heading: "Could not create game:" do %>
     <ul>
       <% @game.errors.full_messages.each do |message| %>
         <li><%= message %></li>

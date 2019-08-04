@@ -7,13 +7,11 @@
 <% end %>
 
 <%if @player.errors.any? %>
-  <div id="errors">
-    <h2>Player would not be created. Please check that that you entered a name and try again.</h2>
-    <h3>Player was not created because:</h3>
+  <%= alert type: :danger, heading: "Could not add player:" do %>
     <ul>
-      <% @player.errors.messages.each do |message| %>
-      <li><%= message %></li>
+      <% @player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
     </ul>
-  </div>
+  <% end %>
 <% end %>
