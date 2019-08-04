@@ -7,24 +7,24 @@ module ComponentsHelper
     render("components/#{name}", *options, &block)
   end
 
-  def popover(content, title: '', **options)
-    {
-      data: {
-        toggle: :popover,
-        content: content,
-        title: title,
-        **options,
-      }
-    }
-  end
+  # def popover(content, title: '', **options)
+  #   {
+  #     data: {
+  #       toggle: :popover,
+  #       content: content,
+  #       title: title,
+  #       **options,
+  #     }
+  #   }
+  # end
 
-  def tooltip(title, **options)
-    {
-      title: title,
-      data: {
-        toggle: :tooltip,
-        **options
-      }
-    }
-  end
+  # def tooltip(title, **options)
+  #   {
+  #     title: title,
+  #     data: {
+  #       toggle: :tooltip,
+  #       **options
+  #     }
+  #   }
+  # end
 end
