@@ -1,6 +1,12 @@
 module ComponentsHelper
+  #TODO: add tests for all this shiz
+
   def alert(*options, &block)
     component(:alert, *options, &block)
+  end
+
+  def scoreboard(*options, &block)
+    component(:scoreboard, *options, &block)
   end
 
   def component(name, *options, &block)
