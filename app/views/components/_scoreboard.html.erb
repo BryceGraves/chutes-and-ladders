@@ -1,0 +1,31 @@
+<%#
+  Scoreboard
+
+  @param display_winners [Boolean] (false)
+  @param players [Array] * array of players within a game
+  @param title [String] ("Scoreboard") table title
+%>
+
+<% 
+  display_winners = local_assigns.fetch(:display_winners, false)
+
+  players = yield.presence || local_assigns.fetch(:players)
+  return if players.blank?
+
+  players = players.sort_by { |player| player.position }.reverse
+  players = display_winners ? players[0..2] : players
+
+  title = local_assigns[:title].presence || "Scoreboard"
+%>
+
+<%= content_tag :div, class: "scoreboard", role: 'scoreboard' do %>
+  <table>
+    <h4><%= title %></h4>
+    <% players.each_with_index do |player, index| %>
+      <tr>
+        <td><%= "#{index + 1}. #{player.name}" %></td>
+        <td><%= "Position: #{player.position}" %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
