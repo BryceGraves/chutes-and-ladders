@@ -1,6 +1,12 @@
 module ComponentsHelper
   #TODO: add tests for all this shiz
 
+  # Main component call
+  def component(name, *options, &block)
+    render("components/#{name}", *options, &block)
+  end
+
+  # All components
   def alert(*options, &block)
     component(:alert, *options, &block)
   end
@@ -11,10 +17,6 @@ module ComponentsHelper
 
   def scoreboard(*options, &block)
     component(:scoreboard, *options, &block)
-  end
-
-  def component(name, *options, &block)
-    render("components/#{name}", *options, &block)
   end
 
   # def popover(content, title: '', **options)
