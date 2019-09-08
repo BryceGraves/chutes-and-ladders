@@ -15,6 +15,10 @@ module ComponentsHelper
     component(:game_list, *options, &block)
   end
 
+  def global_header(*options, &block)
+    component(:global_header, *options, &block)
+  end
+
   def scoreboard(*options, &block)
     component(:scoreboard, *options, &block)
   end
