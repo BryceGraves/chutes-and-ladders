@@ -6,69 +6,63 @@
   }
 </style>
 
-<div class="p-4">
-  <ul class="nav nav-pills mb-3" role="tablist">
-    <li class="nav-item">
-      <%= link_to "All Games", games_path, class: "nav-link" %>
-    </li>
-  </ul>
+<%= global_header %>
 
-  <% if !@game.winner? %>
+<% if !@game.winner? %>
 
-  <% board_width = Integer.sqrt(@game.spaces.size) %>
+<% board_width = Integer.sqrt(@game.spaces.size) %>
 
-  <h2><%= @game.name %></h2>
-  <h2>
-    <%= "Currently playing: #{@game.current_player.name}" %>
-  </h2>
-  <%= button_to "Take Turn", game_play_path(id: @game.id), method: :patch %>
-  <br />
-  <br />
-  <table>
-    <tbody>
-      <% board_rows = @game.spaces.each_slice(board_width) %>
-      <%
-        player_spaces = @game.players.each_with_object({}) do |player, mem|
-          key = player.position
-          mem[key] = [] unless mem[key]
-          mem[key] << player.name
-        end
-      %>
-      <% board_rows.each_with_index do |row, y| %>
-        <tr>
-          <% row.each_with_index do |space, x| %>
-            <% current_position = y * row.length + x + 1  %>
-            <td>
-              <div>
-                <%= "Space Number: #{current_position}" %>
-              </div>
-              <div>
-                <%= "Space Type: #{space.space_type}" %>
-              </div>
-              <div>
-                Players Here:
-                <%=
-                  players_here = player_spaces[current_position]
-                  players_here.join(', ') if players_here
-                %>
-              </div>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<h2><%= @game.name %></h2>
+<h2>
+  <%= "Currently playing: #{@game.current_player.name}" %>
+</h2>
+<%= button_to "Take Turn", game_play_path(id: @game.id), method: :patch %>
+<br />
+<br />
+<table>
+  <tbody>
+    <% board_rows = @game.spaces.each_slice(board_width) %>
+    <%
+      player_spaces = @game.players.each_with_object({}) do |player, mem|
+        key = player.position
+        mem[key] = [] unless mem[key]
+        mem[key] << player.name
+      end
+    %>
+    <% board_rows.each_with_index do |row, y| %>
+      <tr>
+        <% row.each_with_index do |space, x| %>
+          <% current_position = y * row.length + x + 1  %>
+          <td>
+            <div>
+              <%= "Space Number: #{current_position}" %>
+            </div>
+            <div>
+              <%= "Space Type: #{space.space_type}" %>
+            </div>
+            <div>
+              Players Here:
+              <%=
+                players_here = player_spaces[current_position]
+                players_here.join(', ') if players_here
+              %>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <% else %>
+<% else %>
 
-  <h1>WE HAVE A WINNER!!!</h1>
-  <%= "Winner is: " + @game.winner.name %>
-  <%=
-    button_to "Delete Game",
-    game_path(@game.id),
-    method: :delete,
-    id: "delete-game-#{@game.name}"
-  %>
+<h1>WE HAVE A WINNER!!!</h1>
+<%= "Winner is: " + @game.winner.name %>
+<%=
+  button_to "Delete Game",
+  game_path(@game.id),
+  method: :delete,
+  id: "delete-game-#{@game.name}"
+%>
 
-  <% end %>
-</div>
+<% end %>

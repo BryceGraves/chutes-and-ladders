@@ -1,9 +1,2 @@
-<div class="p-4">
-  <ul class="nav nav-pills mb-3" role="tablist">
-    <li class="nav-item">
-      <%= link_to "All Games", games_path, class: "nav-link active" %>
-    </li>
-  </ul>
-
-  <%= game_list games: @games %>
-</div>
+<%= global_header active_tab: "All Games" %>
+<%= game_list games: @games %>

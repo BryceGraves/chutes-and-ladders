@@ -1,47 +1,41 @@
-<div class="p-4">
-  <ul class="nav nav-pills mb-3" role="tablist">
-    <li class="nav-item">
-      <%= link_to "All Games", games_path, class: "nav-link" %>
-    </li>
-  </ul>
+<%= global_header %>
 
-  <h1>Game: <%= @game.name %></h1>
+<h1>Game: <%= @game.name %></h1>
 
-  <%=
-    if @game.players.size > 0
-      button_to "Play Game",
-      game_play_index_path(@game.id),
-      :method => :get
-    end
-  %>
+<%=
+  if @game.players.size > 0
+    button_to "Play Game",
+    game_play_index_path(@game.id),
+    :method => :get
+  end
+%>
 
-  <br />
-  <%= scoreboard players: @game.players, title: "Current Standings" %>
+<br />
+<%= scoreboard players: @game.players, title: "Current Standings" %>
 
-  <br />
-  <table>
-    <thead>
+<br />
+<table>
+  <thead>
+    <tr>
+      <td>Players:</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @game.players.each_with_index do |player, index| %>
       <tr>
-        <td>Players:</td>
+        <td />
+        <td><%= "Player #{index + 1}: #{player.name}" %></td>
+        <td><%= "Position: #{player.position}" %></td>
+        <td>
+          <%=
+            button_to "Remove #{player.name}",
+            game_player_path(player.game_id, player),
+            method: :delete,
+            id: "delete-player-#{player.name}"
+          %>
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      <% @game.players.each_with_index do |player, index| %>
-        <tr>
-          <td />
-          <td><%= "Player #{index + 1}: #{player.name}" %></td>
-          <td><%= "Position: #{player.position}" %></td>
-          <td>
-            <%=
-              button_to "Remove #{player.name}",
-              game_player_path(player.game_id, player),
-              method: :delete,
-              id: "delete-player-#{player.name}"
-            %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= button_to "Add Player", new_game_player_path(@game.id), :method => :get %>
-</div>
+    <% end %>
+  </tbody>
+</table>
+<%= button_to "Add Player", new_game_player_path(@game.id), :method => :get %>
