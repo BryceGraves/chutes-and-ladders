@@ -11,6 +11,10 @@ module ComponentsHelper
     component(:alert, *options, &block)
   end
 
+  def game_board(*options, &block)
+    component(:game_board, *options, &block)
+  end
+
   def game_list(*options, &block)
     component(:game_list, *options, &block)
   end
