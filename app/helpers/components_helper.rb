@@ -5,6 +5,10 @@ module ComponentsHelper
     component(:alert, *options, &block)
   end
 
+  def game_list(*options, &block)
+    component(:game_list, *options, &block)
+  end
+
   def scoreboard(*options, &block)
     component(:scoreboard, *options, &block)
   end
