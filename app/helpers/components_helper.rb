@@ -19,6 +19,10 @@ module ComponentsHelper
     component(:global_header, *options, &block)
   end
 
+  def player_list(*options, &block)
+    component(:player_list, *options, &block)
+  end
+
   def scoreboard(*options, &block)
     component(:scoreboard, *options, &block)
   end
