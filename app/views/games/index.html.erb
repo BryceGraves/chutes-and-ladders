@@ -5,47 +5,5 @@
     </li>
   </ul>
 
-  <h1>Games</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <td>Game Name</td>
-        <td>Players</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @games.each do |game| %>
-        <tr>
-          <td><%= game.name %></td>
-          <% game.players.each do |player| %>
-            <td><%= player.name %></td>
-          <% end %>
-          <td>
-            <%=
-              button_to "View #{game.name}",
-              game_path(game.id),
-              class: "btn btn-primary btn-sm",
-              :method => :get
-            %>
-          </td>
-          <td>
-            <%=
-              button_to "Delete Game",
-              game_path(game),
-              class: "btn btn-danger btn-sm",
-              method: :delete,
-              id: "delete-game-#{game.name}"
-            %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%=
-    button_to "Create New Game",
-    new_game_path,
-    class: "btn btn-success",
-    :method => :get
-  %>
+  <%= game_list games: @games %>
 </div>
