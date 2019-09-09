@@ -11,11 +11,11 @@
 
 <%= content_tag :div, class: "game-winner", role: "game-winner" do %>
   <h1>WE HAVE A WINNER!!!</h1>
-  <%= "Winner is: " + @game.winner.name %>
+  <%= "Winner is: " + game.winner.name %>
   <%=
     button_to "Delete Game",
-    game_path(@game.id),
+    game_path(game.id),
     method: :delete,
-    id: "delete-game-#{@game.name}"
+    id: "delete-game-#{game.name}"
   %>
 <% end %>
