@@ -8,8 +8,6 @@
 <% 
   game = yield.presence || local_assigns.fetch(:game)
   players = yield.presence || local_assigns.fetch(:players)
-  
-  return if game.blank? || players.blank?
 %>
 
 <table>

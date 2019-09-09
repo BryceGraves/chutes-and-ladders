@@ -10,7 +10,6 @@
   display_winners = local_assigns.fetch(:display_winners, false)
 
   players = yield.presence || local_assigns.fetch(:players)
-  return if players.blank?
 
   players = players.sort_by { |player| player.position }.reverse
   players = display_winners ? players[0..2] : players
