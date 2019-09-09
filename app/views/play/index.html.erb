@@ -1,11 +1,9 @@
 <%= global_header %>
 
-<% if !@game.winner? %>
-
-<%= game_board game: @game %>
-
-<% else %>
-
-<%= game_winner game: @game %>
-
-<% end %>
+<%=
+  if !@game.winner?
+    game_board game: @game
+  else
+    game_winner game: @game
+  end
+%>
