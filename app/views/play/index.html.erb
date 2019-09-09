@@ -6,13 +6,6 @@
 
 <% else %>
 
-<h1>WE HAVE A WINNER!!!</h1>
-<%= "Winner is: " + @game.winner.name %>
-<%=
-  button_to "Delete Game",
-  game_path(@game.id),
-  method: :delete,
-  id: "delete-game-#{@game.name}"
-%>
+<%= game_winner game: @game %>
 
 <% end %>

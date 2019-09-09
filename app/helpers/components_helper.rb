@@ -1,5 +1,5 @@
 module ComponentsHelper
-  #TODO: add tests for all this shiz
+  # TODO: add tests for all this shiz
 
   # Main component call
   def component(name, *options, &block)
@@ -17,6 +17,10 @@ module ComponentsHelper
 
   def game_list(*options, &block)
     component(:game_list, *options, &block)
+  end
+
+  def game_winner(*options, &block)
+    component(:game_winner, *options, &block)
   end
 
   def global_header(*options, &block)

@@ -1,0 +1,21 @@
+<%#
+  Game Winner
+
+  @param game [Object] * object containing game data and players
+%>
+
+<% 
+  game = yield.presence || local_assigns.fetch(:game)
+  return if game.blank?
+%>
+
+<%= content_tag :div, class: "game-winner", role: "game-winner" do %>
+  <h1>WE HAVE A WINNER!!!</h1>
+  <%= "Winner is: " + @game.winner.name %>
+  <%=
+    button_to "Delete Game",
+    game_path(@game.id),
+    method: :delete,
+    id: "delete-game-#{@game.name}"
+  %>
+<% end %>
