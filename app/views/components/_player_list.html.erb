@@ -1,0 +1,39 @@
+<%#
+  Player List
+
+  @param game [Object] * game that players are part of
+  @param players [Array] * array of players
+%>
+
+<% 
+  game = yield.presence || local_assigns.fetch(:game)
+  players = yield.presence || local_assigns.fetch(:players)
+%>
+
+<%= content_tag :div, class: "player-list", role: "player-list" do %>
+  <table>
+    <thead>
+      <tr>
+        <td>Players:</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% players.each_with_index do |player, index| %>
+        <tr>
+          <td />
+          <td><%= "Player #{index + 1}: #{player.name}" %></td>
+          <td><%= "Position: #{player.position}" %></td>
+          <td>
+            <%=
+              button_to "Remove #{player.name}",
+              game_player_path(player.game_id, player),
+              method: :delete,
+              id: "delete-player-#{player.name}"
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= button_to "Add Player", new_game_player_path(game.id), :method => :get %>
+<% end %>

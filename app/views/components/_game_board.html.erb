@@ -1,0 +1,64 @@
+<%#
+  Game Board
+
+  @param game [Object] * object containing game data and players
+%>
+
+<% 
+  game = yield.presence || local_assigns.fetch(:game)
+  return if game.blank?
+
+  board_width = Integer.sqrt(game.spaces.size)
+%>
+
+<style type="text/css">
+  table,
+  td {
+    border: 1px solid black;
+    text-align: center;
+  }
+</style>
+
+<%= content_tag :div, class: "game-board", role: "game-board" do %>
+  <h2><%= game.name %></h2>
+  <h2>
+    <%= "Currently playing: #{game.current_player.name}" %>
+  </h2>
+  <%= button_to "Take Turn", game_play_path(id: game.id), method: :patch %>
+  <br />
+  <br />
+  <table>
+    <tbody>
+      <% board_rows = game.spaces.each_slice(board_width) %>
+      <%
+        player_spaces = game.players.each_with_object({}) do |player, mem|
+          key = player.position
+          mem[key] = [] unless mem[key]
+          mem[key] << player.name
+        end
+      %>
+      <% board_rows.each_with_index do |row, y| %>
+        <tr>
+          <% row.each_with_index do |space, x| %>
+            <% current_position = y * row.length + x + 1  %>
+            <td>
+              <div>
+                <%= "Space Number: #{current_position}" %>
+              </div>
+              <div>
+                <%= "Space Type: #{space.space_type}" %>
+              </div>
+              <div>
+                Players Here:
+                <%=
+                  players_here = player_spaces[current_position]
+                  players_here.join(', ') if players_here
+                %>
+              </div>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
