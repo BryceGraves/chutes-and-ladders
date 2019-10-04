@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
-  has_many :players
-  has_many :spaces
+  has_many :players, dependent: :destroy
+  has_many :spaces, dependent: :destroy
   validates :turn, allow_blank: false, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :name, allow_blank: false, presence: true
 
