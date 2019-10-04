@@ -6,7 +6,6 @@
 
 <% 
   games = yield.presence || local_assigns.fetch(:games)
-  return if games.blank?
 %>
 
 <%= content_tag :div, class: "game-list", role: 'game-list' do %>
