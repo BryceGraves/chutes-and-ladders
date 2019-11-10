@@ -3,6 +3,23 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap', '= 4.3.1'
+gem 'capybara-screenshot', '~> 1.0'
+gem 'coffee-rails', '~> 4.2'
+gem 'humanize', '~> 2.1'
+gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
+gem 'puma', '~> 3.11'
+gem 'rails'
+gem 'rubocop', require: false
+gem 'sass-rails', '~> 5.0'
+gem 'solargraph'
+gem "sprockets-rails", "~> 3.2"
+gem 'turbolinks', '~> 5'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'uglifier', '>= 1.3.0'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -39,20 +56,3 @@ end
 group :production do
   gem 'pg', '~> 0.18'
 end
-
-gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '= 4.3.1'
-gem 'capybara-screenshot', '~> 1.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'humanize', '~> 2.1'
-gem 'jbuilder', '~> 2.5'
-gem 'jquery-rails'
-gem 'puma', '~> 3.11'
-gem 'rails'
-gem 'rubocop', require: false
-gem 'sass-rails', '~> 5.0'
-gem 'solargraph'
-gem "sprockets-rails", "~> 3.2"
-gem 'turbolinks', '~> 5'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'uglifier', '>= 1.3.0'
