@@ -6,6 +6,9 @@ cache:
 services:
 - postgresql
 
+before_script:
+  - bundle exec rake db:reset
+
 deploy:
   provider: heroku
   api_key:
