@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: chutes-and-ladders_development
+  database: chutes_and_ladders_development
 
 test:
   <<: *default
-  database: chutes-and-ladders_test
+  database: chutes_and_ladders_test
 
 production:
   <<: *default
-  database: chutes-and-ladders_production
-  username: chutes-and-ladders
-  password: <%= ENV['CHUTES-AND-LADDERS_DATABASE_PASSWORD'] %>
+  database: chutes_and_ladders_production
+  username: chutes_and_ladders
+  password: <%= ENV['CHUTES_AND_LADDERS_DATABASE_PASSWORD'] %>
