@@ -10,6 +10,7 @@ gem 'coffee-rails'
 gem 'humanize'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'pg'
 gem 'puma'
 gem 'rails'
 gem 'rubocop', require: false
@@ -34,7 +35,6 @@ gem 'uglifier'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
-  gem 'sqlite3'
   gem "rspec-rails"
 end
 
@@ -50,8 +50,4 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
-end
-
-group :production do
-  gem 'pg'
 end
