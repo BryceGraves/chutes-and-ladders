@@ -48,7 +48,7 @@ gem 'humanize', '~> 2.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'puma', '~> 3.11'
-gem 'rails', '~> 5.2.2'
+gem 'rails'
 gem 'rubocop', require: false
 gem 'sass-rails', '~> 5.0'
 gem 'solargraph'
