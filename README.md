@@ -10,6 +10,6 @@ The test suite is executed by running the command ```rspec``` from the command l
 
 Quick list of important things:
 
-* Ruby version: 2.6.3
-* Rails version: 5.2.3
+* Ruby version: 2.6.5
+* Rails version: 6.0.1
 * Bundler version: 2.0.2
