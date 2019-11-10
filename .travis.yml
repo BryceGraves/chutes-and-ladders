@@ -1,3 +1,9 @@
 language: ruby
-rvm:
-  - 2.6.3
+cache:
+  bundler: true
+
+deploy:
+  api_key:
+    secure: rd7L1YnKZleKAFHt79uKuCYXeXJb2ocbHneFIyLjRBfKYoAUC7W4wnr2VRZgyncjGN1JVZTnrxy/0SHfNRE+O+k2zk83ljf3JBPi8kaYb8OXLOl+dmSVsFg5Sn3ZV4UtA79bPDc0FlYSzkJ4ASZ1CdIXfvTSGtyTCtdoIrtWh7bVNrq/a52kN5a2PsIKSrK5cMG4yIIHjfzPrQ+GE9SgfVLCxy2GoztT5GzipQk1mVCf7QsVLKu02a1paWwXkjDOGshD1o3C66DNiB1REBaAABxMg4yIilhdmF/Wmb8OVIYxnZh00ROGdHyutwImGeZO/9bO4wL+mAhde4Y7D2y1/czhBzyPoojQ5PjRIm8LJYf43mkMZJZcnHpd+LrsVAll5BXfVhxY7S/bnUZeiNNvHwvxDdqtjgHKtPlt1Dle7jUjhjLP9xzCkJVlpsUe3IXSO/EmuSa39n3C8WsWJSZuqy+xuwdOVRKzCOP9QafVEKSwk2dLr6BN52Frb9Q1fd4BKCd/MMXemqDXIBiHDY2yiyi/JzgPFMWZ0DBASceW8iCF+vbKq13A9GCnUO5lss7dHtvlxKOCecWnKWLWxF0UWgO2i0ONHWImYCLQ1tLbFXzlsubNUDwgUOumKR0UJXUY3FP76sTru36X4ORxALSmMYtRLrfYnEG4YqTO8aZCFQ0=
+  app:
+    master: chutes-and-ladders
