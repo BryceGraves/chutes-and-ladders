@@ -4,21 +4,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '= 4.3.1'
-gem 'capybara-screenshot', '~> 1.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'humanize', '~> 2.1'
-gem 'jbuilder', '~> 2.5'
+gem 'bootstrap'
+gem 'capybara-screenshot'
+gem 'coffee-rails'
+gem 'humanize'
+gem 'jbuilder'
 gem 'jquery-rails'
-gem 'puma', '~> 3.11'
+gem 'puma'
 gem 'rails'
 gem 'rubocop', require: false
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 gem 'solargraph'
-gem "sprockets-rails", "~> 3.2"
-gem 'turbolinks', '~> 5'
+gem "sprockets-rails"
+gem 'turbolinks'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -35,24 +35,24 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
   gem 'sqlite3'
-  gem "rails-controller-testing", "~> 1.0"
-  gem "rspec-rails", "~> 3.7.0"
+  gem "rails-controller-testing"
+  gem "rspec-rails"
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'listen'
+  gem 'spring-watcher-listen'
   gem 'spring'
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console'
 end
 
 group :test do
   gem 'rspec-html-matchers'
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
 
 group :production do
-  gem 'pg', '~> 0.18'
+  gem 'pg'
 end
