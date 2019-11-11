@@ -32,7 +32,6 @@
 
 .vscode*
 /coverage
-echo "coverage" >> .gitignore
 
 # ignore changes to test database
 db/test.sqlite3
